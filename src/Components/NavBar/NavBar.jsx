@@ -4,7 +4,7 @@ const NavBar = () => {
     // Array of objects representing each link
     const links = [
         { text: "WOMEN", to: "/shop/women" },
-        { text: "MEN", to: "/shop/men's clothing" },
+        { text: "MEN", to: "/shop/men" },
         { text: "BAGS & ACCESSORIES", to: "/shop/bags-accessories" },
         { text: "LUMIÈRE DE COUTURE", to: "/shop/lumiere-de-couture" }
     ];
