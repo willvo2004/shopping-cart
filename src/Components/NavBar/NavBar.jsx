@@ -1,18 +1,25 @@
+import { Link } from "react-router-dom";
+
 const NavBar = () => {
+    // Array of objects representing each link
+    const links = [
+        { text: "WOMEN", to: "/shop/women" },
+        { text: "MEN", to: "/shop/men's clothing" },
+        { text: "BAGS & ACCESSORIES", to: "/shop/bags-accessories" },
+        { text: "LUMIÈRE DE COUTURE", to: "/shop/lumiere-de-couture" }
+    ];
+
     return (
-        <>
         <nav className="flex justify-between items-center h-16 bg-white relative shadow-sm font-mono" role="navigation">
-            <a href="/" className="pl-8">Logo</a>
-            <div className="pr-8 md:block hidden">
-                <a href="/" className="p-4">Home</a>
-                <a href="/" className="p-4">About</a>
-                <a href="/" className="p-4">Contact</a>
-                <a href="/" className="p-4">Services</a>
-                <a href="/" className="p-4">Sign Up</a>
+            <div className="nav-container">
+                {links.map((link, index) => (
+                    <Link key={link.text} to={link.to} className={index === links.length - 1 ? "pr-8" : "p-8"}>
+                        {link.text}
+                    </Link>
+                ))}
             </div>
         </nav>
-        </>
-    )
-}
+    );
+};
 
 export default NavBar;
