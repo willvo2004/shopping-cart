@@ -39,7 +39,7 @@ const ShoppingPage = () => {
           }));
         } else {
           const response = await fetch(
-            `https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4209&limit=4&country=US&sort=freshness&q=${shopid}${category}&currency=USD&sizeSchema=US&lang=en-US`,
+            `https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4209&limit=1&country=US&sort=freshness&q=${shopid}${category}&currency=USD&sizeSchema=US&lang=en-US`,
             options
           );
           if (response.ok) {
