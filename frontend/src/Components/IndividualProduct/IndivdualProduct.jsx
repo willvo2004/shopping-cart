@@ -11,8 +11,6 @@ const IndividualProduct = () => {
   const [focusImage, setFocusImage] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.log(category, productid, shopid);
-
   const options = useMemo(
     () => ({
       method: "GET",
