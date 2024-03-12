@@ -7,7 +7,6 @@ const apiKey = import.meta.env.VITE_API_KEY;
 
 const ProductPage = () => {
   const { shopid, category } = useParams();
-  console.log(shopid, category);
 
   const options = useMemo(
     () => ({
@@ -46,7 +45,7 @@ const ProductPage = () => {
   // abstract into a new component ProductCard
   return (
     <>
-      <div className="navBar-wrapper sticky top-0 w-screen flex-col justify-center">
+      <div className="navBar-wrapper absolute top-0 w-screen flex-col justify-center mb-16">
         <NavBar />
       </div>
       <div className="w-full overflow-x-clip">

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ShoppingBagIcon from "../ShoppingBagIcon";
 
 const NavBar = () => {
@@ -14,9 +14,9 @@ const NavBar = () => {
         <nav className="flex justify-between items-center h-16 bg-white relative shadow-sm font-mono w-screen" role="navigation">
             <div className="nav-container">
                 {links.map((link, index) => (
-                    <Link key={link.text} to={link.to} className={index === links.length - 1 ? "pr-8" : "p-8"}>
+                    <NavLink key={link.text} to={link.to} className={index === links.length - 1 ? "pr-8" : "p-8"}>
                         {link.text}
-                    </Link>
+                    </NavLink>
                 ))}
             </div>
             <ShoppingBagIcon />
