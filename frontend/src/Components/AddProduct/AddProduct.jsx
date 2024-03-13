@@ -1,11 +1,14 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import ProductSizeList from "../ProductSizeList/ProductSizeList";
 
 const AddProduct = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
   const [cart, setCart] = useState([]);
+  const [loadingCart, setLoadingCart] = useState(false);
 
-  const handleCheckOut = () => {
+  const handleCheckOut = async () => {
+    setLoadingCart(true);
     const product = {
       id: data.id,
       name: data.name,
@@ -30,8 +33,8 @@ const AddProduct = ({ data }) => {
     setCart(updatedCart);
 
     // Retrieve the existing cart from local storage
-    const existingLocalStorageCart =
-      JSON.parse(localStorage.getItem("cart")) || [];
+    const existingLocalStorageCart = 
+    JSON.parse(localStorage.getItem("cart")) || [];
 
     // Merge the existing cart with the updated cart, excluding duplicates
     existingLocalStorageCart.forEach(existingItem => {
@@ -44,9 +47,12 @@ const AddProduct = ({ data }) => {
     });
 
     // Save the updated cart back to local storage
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-
+    await localStorage.setItem('cart', JSON.stringify(updatedCart));
     setCart(updatedCart);
+    
+    setTimeout(() => {
+        setLoadingCart(false);
+      }, 1000);
     console.log('Cart:', updatedCart);
   };
 
@@ -62,6 +68,7 @@ const AddProduct = ({ data }) => {
     <div className="flex flex-col gap-8">
       <h1 className="font-bold">{data.name.toUpperCase()}</h1>
       <h1>USD {data.price.current.text}</h1>
+      <ProductSizeList variants={data.variants} />
       <div className="flex items-center gap-2">
         <h2>Quantity </h2>
         <div className="flex items-center gap-3">
@@ -75,7 +82,7 @@ const AddProduct = ({ data }) => {
         </div>
       </div>
       <button onClick={handleCheckOut} value={data.id}>
-        ADD TO CART
+        {loadingCart ? "Adding to cart..." : "Add to cart"}
       </button>
     </div>
   );
