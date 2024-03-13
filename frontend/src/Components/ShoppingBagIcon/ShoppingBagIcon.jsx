@@ -1,6 +1,5 @@
 import { MdShoppingBag } from "react-icons/md";
 import { IconContext } from "react-icons";
-import PropTypes from 'prop-types';
 
 const ShoppingBagIcon = () => {
   return (
@@ -11,9 +10,5 @@ const ShoppingBagIcon = () => {
       </div>
     </IconContext.Provider>
   );
-};
-
-ShoppingBagIcon.propTypes = {
-   count: PropTypes.number.isRequired,
 };
 export default ShoppingBagIcon;
