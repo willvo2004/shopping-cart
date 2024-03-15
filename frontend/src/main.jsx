@@ -6,6 +6,8 @@ import './index.css'
 import ShoppingPage from './Components/ShoppingPage/ShoppingPage.jsx'
 import ProductPage from './Components/ProductsPage/ProductsPage.jsx'
 import IndividualProduct from './Components/IndividualProduct/IndivdualProduct.jsx'
+import Cart from './Components/Cart/Cart.jsx'
+import Checkout from './Components/Checkout/Checkout.jsx'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
   {
     path: 'shop/:shopid/:category/:productid',
     element: <IndividualProduct />
+  },
+  {
+    path: '/cart',
+    element: <Cart />
+  },
+  {
+    path: '/checkout',
+    element: <Checkout />
   }
 ])
 

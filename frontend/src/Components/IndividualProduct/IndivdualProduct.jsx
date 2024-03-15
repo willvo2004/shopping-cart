@@ -26,22 +26,26 @@ const IndividualProduct = () => {
     const fetchProductData = async () => {
       try {
         const response = await fetch(
-          `https://asos2.p.rapidapi.com/products/v3/detail?id=${productid}&lang=en-US&store=US&sizeSchema=US&currency=USD`,
+          `https://asos2.p.rapidapi.com/products/v4/detail?id=${productid}&lang=en-US&store=US&sizeSchema=US&currency=USD`,
           options
         );
-        if (response.ok) {
+        
+        const getPrice = await fetch(`https://asos2.p.rapidapi.com/products/v4/get-stock-price?productIds=${productid}&lang=en-US&store=US&sizeSchema=US&currency=USD`, 
+          options);
+        if (response.ok && getPrice.ok) {
           const data = await response.json();
+          const price = await getPrice.json();
+          data.price = price[0].productPrice.current.value;
           setProductInfo(data);
           setLoading(false);
           setFocusImage(data.media.images[0].url);
-        }
+      }
       } catch (error) {
         console.log("Error fetching data:", error);
       }
     };
     fetchProductData();
   }, [options, productid]);
-  console.log(productInfo);
 
   return (
     <>
@@ -70,6 +74,9 @@ const IndividualProduct = () => {
           </div>
         </div>
       )}
+      <div className="fixed inset-0 -z-10 h-full w-full bg-slate-300 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+        <div className="fixed bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)]"></div>
+      </div>
     </>
   );
 };

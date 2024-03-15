@@ -45,11 +45,14 @@ const ProductPage = () => {
   // abstract into a new component ProductCard
   return (
     <>
-      <div className="navBar-wrapper absolute top-0 w-screen flex-col justify-center mb-16">
+      <div className="navBar-wrapper sticky top-0 w-screen flex-col justify-center mb-16">
         <NavBar />
       </div>
       <div className="w-full overflow-x-clip">
         <ProductCard contents={products} />
+      </div>
+      <div className="fixed inset-0 -z-10 h-full w-full bg-slate-300 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+        <div className="fixed bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)]"></div>
       </div>
     </>
   );

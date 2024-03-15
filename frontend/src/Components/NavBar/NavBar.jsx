@@ -11,10 +11,10 @@ const NavBar = () => {
     ];
 
     return (
-        <nav className="flex justify-between items-center h-16 bg-white relative shadow-sm font-mono w-screen" role="navigation">
+        <nav className="flex justify-between items-center h-16 bg-white shadow-sm font-mono w-screen absolute top-0" role="navigation">
             <div className="nav-container">
                 {links.map((link, index) => (
-                    <NavLink key={link.text} to={link.to} className={index === links.length - 1 ? "pr-8" : "p-8"}>
+                    <NavLink key={link.text} to={link.to} className={index === links.length - 1 ? "m-8" : "m-8"}>
                         {link.text}
                     </NavLink>
                 ))}
