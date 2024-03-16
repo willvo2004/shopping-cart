@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../NavBar";
-import AddProduct from "../AddProduct";
+import AddProduct from "./AddProduct";
 
 const IndividualProduct = () => {
   const apiKey = import.meta.env.VITE_API_KEY;

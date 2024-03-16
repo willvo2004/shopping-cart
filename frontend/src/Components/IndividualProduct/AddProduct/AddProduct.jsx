@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import ProductSizeList from "../ProductSizeList/ProductSizeList";
-import SideCartSlide from "../SideCartSlide";
+import ProductSizeList from "../../ProductSizeList/ProductSizeList";
+import SideCartSlide from "../../SideCartSlide";
 
 const AddProduct = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
