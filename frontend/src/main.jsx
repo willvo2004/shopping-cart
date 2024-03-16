@@ -9,6 +9,7 @@ import IndividualProduct from './Components/IndividualProduct/IndivdualProduct.j
 import Cart from './Components/Cart/Cart.jsx'
 import Checkout from './Components/Checkout/Checkout.jsx'
 import UserSignIn from './Components/UserSignIn/UserSignIn.jsx'
+import UserSignUp from './Components/UserSignUp/UserSignUp.jsx'
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: '/user/signin',
     element: <UserSignIn />
+  },
+  {
+    path: '/user/register',
+    element: <UserSignUp />
   }
 ])
 
