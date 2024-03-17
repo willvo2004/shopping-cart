@@ -4,11 +4,13 @@ import { User } from './models/user.js';
 import mongoose from 'mongoose';
 import { getAllUsers } from './middleware/getAllUsers.js';
 import userRoute from './routes/userRoute.js';
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
 const app = express();
+app.use(cookieParser());
 app.use(express.json());
-app.use(cors())
+app.use(cors({credentials: true, origin: 'http://localhost:5173'}))
 
 app.get('/', (request, response) => {
     console.log(request);
@@ -18,24 +20,7 @@ app.get('/', (request, response) => {
 app.use('/user', userRoute)
 
 // get all users in the database
-app.use(getAllUsers)
-
-app.get('/user', async (request, response) => {
-    console.log("Penis mode activated");
-});
-
-app.get('/user/:userid', async (request, response) => {
-    try {
-
-        const { userid } = request.params;
-
-        const users = await User.findById(userid);
-        response.status(200).send(users);
-    } catch (error) {
-        console.log(error);
-        response.status(500).send('Internal server error');
-    }
-})
+app.use(getAllUsers);
 
 mongoose.connect(MONGODB_URI)
     .then(() => {
