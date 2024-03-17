@@ -2,6 +2,7 @@ import { FaUser } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import RadixHoverCard from "../../ui/HoverCard/RadixHoverCard.jsx";
 
 const UserIcon = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -30,9 +31,11 @@ const UserIcon = () => {
     <IconContext.Provider value={{ className: "text-2xl", color: "black" }}>
       <div className="mr-8 hover:bg-slate-400 rounded-full flex justify-center items-center cursor-pointer">
         {/* Shopping bag icon */}
-        <Link to={authenticated ? "user/profile" : "/user/signin"}>
+        {!authenticated ? 
+        <Link to="/user/signin">
           <FaUser />
-        </Link>
+        </Link> :
+        <RadixHoverCard />}
       </div>
     </IconContext.Provider>
   );

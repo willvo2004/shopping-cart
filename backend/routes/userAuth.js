@@ -34,7 +34,6 @@ export const userLogin = async (request, response, next) => {
     });
     
     response.status(200).json({ message: "Login successful"});
-    console.log(request.headers);
   } catch (error) {
     console.log(error);
     response.status(500).json({ message: "Internal server error" });

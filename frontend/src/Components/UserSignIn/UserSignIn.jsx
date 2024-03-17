@@ -19,7 +19,7 @@ const UserSignIn = () => {
       
       if (response.ok) {
         // const data = await response.json();
-        // window.location.href = "/";
+        window.location.href = "/";
       } else {
         const error = await response.json();
         alert(error.message);

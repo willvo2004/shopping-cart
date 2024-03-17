@@ -5,7 +5,6 @@ dotenv.config();
 export const userAuth = async (request, response, next) => {
     const token = request.cookies.accessToken;
     if (!token) {
-        console.log(token);
         return response.status(401).json({ message: "Unauthorized" });
     }
     try {
