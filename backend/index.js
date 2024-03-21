@@ -4,6 +4,7 @@ import { User } from './models/user.js';
 import mongoose from 'mongoose';
 import { getAllUsers } from './middleware/getAllUsers.js';
 import userRoute from './routes/userRoute.js';
+import viewedRoute from './routes/viewedRoute.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
@@ -18,6 +19,7 @@ app.get('/', (request, response) => {
 });
 
 app.use('/user', userRoute)
+app.use('/viewed' , viewedRoute)
 
 // get all users in the database
 app.use(getAllUsers);
