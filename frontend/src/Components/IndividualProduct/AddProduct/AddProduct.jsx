@@ -3,7 +3,7 @@ import { useState } from "react";
 import ProductSizeList from "../../ProductSizeList/ProductSizeList";
 import SideCartSlide from "../../SideCartSlide";
 
-const AddProduct = ({ data }) => {
+const AddProduct = ({ data, price }) => {
   const [quantity, setQuantity] = useState(1);
   const [loadingCart, setLoadingCart] = useState(false);
   const [selectedSize, setSelectedSize] = useState('XS');
@@ -15,7 +15,7 @@ const AddProduct = ({ data }) => {
       id: data.id,
       name: data.name,
       image: data.media.images[0].url,
-      price: data.price,
+      price: price,
       size: selectedSize,
       quantity: quantity,
       // add a size property to the product object
@@ -60,7 +60,7 @@ const AddProduct = ({ data }) => {
     <>
         <div className="flex flex-col gap-8">
         <h1 className="font-bold">{data.name.toUpperCase()}</h1>
-        <h1>USD ${data.price} </h1>
+        <h1>USD {price} </h1>
         
         <ProductSizeList variants={data.variants} onChange={handleSizeChange} />
         
@@ -88,5 +88,6 @@ const AddProduct = ({ data }) => {
 
 AddProduct.propTypes = {
   data: PropTypes.object.isRequired,
+  price: PropTypes.string.isRequired
 };
 export default AddProduct;
