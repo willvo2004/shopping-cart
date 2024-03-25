@@ -1,12 +1,10 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import ProductSizeList from "../../ProductSizeList/ProductSizeList";
 import SideCartSlide from "../../SideCartSlide";
 
 const AddProduct = ({ data, price }) => {
   const [quantity, setQuantity] = useState(1);
   const [loadingCart, setLoadingCart] = useState(false);
-  const [selectedSize, setSelectedSize] = useState('XS');
   const [show, setShow] = useState(false);
 
   const handleCheckOut = () => {
@@ -16,7 +14,6 @@ const AddProduct = ({ data, price }) => {
       name: data.name,
       image: data.media.images[0].url,
       price: price,
-      size: selectedSize,
       quantity: quantity,
       // add a size property to the product object
     };
@@ -52,17 +49,13 @@ const AddProduct = ({ data, price }) => {
   const handleClose = () => {
     setShow(false);
   }
-
-  const handleSizeChange = (size) => {
-    setSelectedSize(size);
-  }
   return (
     <>
         <div className="flex flex-col gap-8">
         <h1 className="font-bold">{data.name.toUpperCase()}</h1>
         <h1>USD {price} </h1>
         
-        <ProductSizeList variants={data.variants} onChange={handleSizeChange} />
+
         
         <div className="flex items-center gap-2">
             <h2>Quantity </h2>

@@ -1,9 +1,9 @@
 import { ViewProduct } from "../models/viewProduct.js";
 
 export const trackViewed = async (request, response, next) => {
-    const { productID, productImage } = request.body;
+    const { productID, productImage, location, productInfo } = request.body;
     const userID = request.user;
-    const viewedProducts = await ViewProduct.findOne({ productID, productImage, userID })
+    const viewedProducts = await ViewProduct.findOne({ productID, productImage, userID, location, productInfo })
     if (viewedProducts) {
         console.log(viewedProducts);
         return response.status(400).json({ message: "Product already viewed" });
@@ -12,7 +12,9 @@ export const trackViewed = async (request, response, next) => {
         const viewProduct = new ViewProduct({
             productID,
             productImage,
-            userID
+            userID,
+            location,
+            productInfo
         });
         await viewProduct.save();
         response.status(200).json({ message: "Product viewed" });

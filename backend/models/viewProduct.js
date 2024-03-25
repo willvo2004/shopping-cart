@@ -13,7 +13,15 @@ const viewProductSchema = new mongoose.Schema({
         type: String,
         ref: "User",
         required: true,
+    },
+    location: {
+        type: String
+    },
+    productInfo: {
+        type: Object,
+        required: true,
     }
+
 });
 
 export const ViewProduct = mongoose.model("ViewProduct", viewProductSchema);

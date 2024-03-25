@@ -7,7 +7,7 @@ const ProductCard = ({ contents }) => {
     <div className="product-card-wrapper flex flex-wrap gap-0">
       {contents.map((content) => (
         <div key={content.id} className="flex-col">
-        <Link key={content.id} to={`${location.pathname}/${content.id}`}>
+        <Link key={content.id} to={`${location.pathname}/${content.id}`} state={{from: content}}>
         <div className="product-item">
           <img
             src={"https://" + content.imageUrl}
